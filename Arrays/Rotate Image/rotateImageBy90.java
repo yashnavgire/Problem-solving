@@ -1,4 +1,16 @@
-// Problem Link :- 
+// Problem Link :- https://leetcode.com/problems/rotate-image/
+// There are 3 patterns for the rotate Image
+// 1. Clockwise 90 rotate
+//     a. Transpose Matrix
+//     b. Reverse each row
+// 2. Clockwise 180 rotate
+//     a. Swap the first and last columns
+//     b. Reverse each columns
+// 3. Anti Clockwise 90 rotate
+//     a. Ulta Transpose Matrix
+//     b. Revrse each row
+// 4. Anti Clockwiese 180 rotate 
+//     NA
 
 class Solution {
     public void rotate(int[][] matrix) {
