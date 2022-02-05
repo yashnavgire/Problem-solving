@@ -1,0 +1,4 @@
+We can use the Longest Common Subsequence (LCS) to solve this problem. The idea is to find the longest sequence of characters present in both original sequences in the same order. From the longest common subsequence, it is only a small step to get the diff-like output:
+
+If a character is absent in the subsequence but present in the first original sequence, it must have been deleted (indicated by the - marks).
+If it is absent in the subsequence but present in the second original sequence, it must have been inserted (indicated by the + marks).
