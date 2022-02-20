@@ -92,7 +92,7 @@ public class Trie {
             }
         }
         
-        return node.getPrefix();
+        return node.getEnd();
     }
 
     public int countWordsStartingWith(String word) {
