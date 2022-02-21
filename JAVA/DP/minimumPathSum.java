@@ -15,7 +15,9 @@ class Solution {
     
     public int solve(int[][] grid, int[][] dp, int i, int j, int row, int col) {
         if (i < 0 || j < 0 || i >= row || j >= col) {
-            return 99999;
+            // This is added since we will have the to return 
+            // max value at the end of the path
+            return Integer.MAX_VALUE;
         }
         
         if (i == row-1 && j == col-1) {
