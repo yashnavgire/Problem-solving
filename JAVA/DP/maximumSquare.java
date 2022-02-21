@@ -3,18 +3,20 @@
 class Solution {
     public int maximalSquare(char[][] matrix) {
         int i = 0, j = 0, res = 0;
-        int[][] dp = new int[matrix.length][matrix[0].length];
+        int[][] dp = new int[matrix.length+1][matrix[0].length+1];
         
-        for (i = 0; i < dp.length; i++) {
-            for (j = 0; j < dp[0].length; j++) {
-                dp[i][j] = -1;
-            }
-        }
+        // for (i = 0; i < dp.length; i++) {
+        //     for (j = 0; j < dp[0].length; j++) {
+        //         dp[i][j] = -1;
+        //     }
+        // }
         
-        for (i = 0; i < matrix.length; i++) {
-            for (j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == '1') {
-                    res = Math.max(res, solve(matrix, dp, i ,j , matrix.length, matrix[0].length));
+        for (i = 1; i < matrix.length+1; i++) {
+            for (j = 1; j < matrix[0].length+1; j++) {
+                if (matrix[i-1][j-1] == '1') {
+                    dp[i][j] = 1 + Math.min(dp[i-1][j-1], Math.min(dp[i-1][j], dp[i][j-1]));
+                    res = Math.max(res, dp[i][j]);
+                    //res = Math.max(res, solve(matrix, dp, i ,j , matrix.length, matrix[0].length));
                 }
             }
         }
