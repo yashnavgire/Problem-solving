@@ -1,6 +1,6 @@
 public void shortestPath(List<List<Integer>> adj, int[] dist, int src) {
     int i = 0, top = 0, parent = 0;
-    Arrays.fill(dist, -1);
+    Arrays.fill(dist, Integer.MAX_VALUE);
 
     Queue<Integer> q = new LinkedList<>();
 
