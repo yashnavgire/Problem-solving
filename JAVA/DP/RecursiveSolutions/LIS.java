@@ -1,6 +1,6 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        int[] dp = new int[nums.length];
+        int[] dp = new int[nums.length + 1];
         Arrays.fill(dp, -1);
         
         return solve(nums, dp, 0, Integer.MIN_VALUE);
@@ -10,17 +10,15 @@ class Solution {
         if (i >= nums.length) {
             return 0;
         }
-        
-        if (dp[i] != -1) {
+         
+        if (nums[i] > prev) {
+            
+            dp[i] = (Math.max(1 + 
+                             solve(nums, dp, i + 1, nums[i]), 
+                             solve(nums, dp, i + 1, prev)));
             return dp[i];
         }
         
-        int take = 0;
-        int dontTake = solve(nums, dp, i + 1, prev);
-        if(nums[i] > prev) {
-            take = 1 + solve(nums, dp, i + 1, nums[i]); 
-        }
-        dp[i] = Math.max(take, dontTake);
-        return  dp[i];                               
+        return solve(nums, dp, i + 1, prev);
     }
 }
