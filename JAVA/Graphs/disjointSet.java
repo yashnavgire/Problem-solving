@@ -1,7 +1,6 @@
 /*
-  This is the sample Program for Unio Find using Disjoint Sets using the Quick Find and Quick Union.
-  Quick Find -> O(1)
-  Quick Union -> O(n)
+  This is the sample Program for Unio Find using Disjoint Sets using the Quick Find and normal union, but the Quick Union is more faster than the Quick Union Since the worst
+  time complexity will be O(n2) in that here ebvertime for each node we ill need to loop over the root array
 */
 
 class unionFind {
