@@ -1,0 +1,15 @@
+The composition is the stricter form of aggregation. Like Book and Library.
+The Library cannot exist without the books. So if Books is destroyed then the Library is also not there.
+
+In the aggregation is also the kind of the has a relationship where we can refer to the other classes as well
+
+eg: -
+
+class Address {
+  String add;
+}
+
+Class Person {
+  String fname;
+  Address ass;        // usage of aggregation
+}
