@@ -1,44 +1,29 @@
-// Problem Link :- https://leetcode.com/problems/middle-of-the-linked-list/submissions/
+/** This is the ListNode class definition
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
+class ListNode {
+	int data;
+	ListNode next;
+
+	ListNode(int data) {
+		this.data = data;
+		this.next = null;
+	}
+}
+**/
+
 class Solution {
-    public ListNode middleNode(ListNode head) {
-        if (head.next == null) {
-            return head;
-        }
-        
-        if (head == null) {
-            return head;
-        }
-        
-        int len = 0;
-        ListNode start = head;
-        
-        while (head != null) {
-            head = head.next;
-            len++;
-        }
-        
-        len = len/2 + 1;
-        
-        head = start;
-        
-        // System.out.println(len);
-        
-        while (len != 1) {
-            len--;
-            head = head.next;
-        }
-        
-        return head;
-    }
+	int getMiddleElementOfLinkedList (ListNode head) {
+		if (head == null) {
+			return -1;
+		}
+	    ListNode slow = head;
+		ListNode fast = head;
+		
+		while (fast != null && fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		
+		return slow.data;
+	}
 }
