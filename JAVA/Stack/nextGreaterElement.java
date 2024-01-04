@@ -14,23 +14,43 @@ Note that the next greater element for the last array element is always -1.
 
 */
 
-class Solution
-{
-	public static int[] findNextGreaterElements(int[] nums) {
-		int i = 0, j = 0;
-		Stack<Integer> st = new Stack<>();
-		int[] ans = new int[nums.length];
-		Arrays.fill(ans, -1);
-		
-		for (i = 0; i < nums.length; i++) {
-			while (!st.isEmpty() && nums[st.peek()] < nums[i]) {
-				ans[st.pop()] = nums[i]; 
-			}
-			
-			st.push(i);
-		}
-		
-		return ans;
+class Solution {
 
-	}
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        int i = 0, j = 0, flag = 0;
+        int[] arr = new int[nums1.length];
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> st = new Stack<>();
+
+        for (i = nums2.length-1; i >= 0; i--) {
+            
+            if (st.isEmpty()) {
+                map.put(nums2[i], -1);
+            } else if (!st.isEmpty() && st.peek() > nums2[i]) {
+                map.put(nums2[i], st.peek());
+            } else if (!st.isEmpty() && st.peek() <= nums2[i]) {
+                while (!st.isEmpty() && st.peek() <= nums2[i]) {
+                    st.pop();
+                }
+
+                if (st.isEmpty()) {
+                    map.put(nums2[i], -1);
+                } else if (st.peek() > nums2[i]) {
+                    map.put(nums2[i], st.peek());
+                }
+            }
+
+            st.push(nums2[i]);
+        }
+
+        for (int num : nums1) {
+            if (map.containsKey(num) && map.get(num) != -1) {
+                arr[j++] = map.get(num);
+            } else {
+                arr[j++] = -1;
+            }
+        }
+
+        return arr;
+    }
 }
