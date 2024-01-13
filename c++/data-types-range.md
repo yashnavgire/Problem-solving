@@ -26,3 +26,9 @@ Double is a 64-bit IEEE 754 double-precision floating-point number.
 - The size of a double is 8-bytes(64 bit), i.e., a double variable requires 8-bytes of computer memory space.
 - Double has 15-digits of precision which means the double variable is significant up to 15 decimal digits, and hence it will truncate anything after that.  For example, 12.435671123654328 can be stored in a variable using a double data type.
 Also see, Ensemble Learning
+
+
+long double - 
+
+
+char - 1byte
