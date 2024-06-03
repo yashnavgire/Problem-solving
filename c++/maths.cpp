@@ -49,6 +49,25 @@ modular arithmetic rules
 3. sub : (a-b)%m = ((a%m) - (b%m) + m) % m
 4. div : fermat's little theorem using multiplicative inverse
 
+------------
+
+Bitwise shotcuts - 
+
+1. Test kth bit is set: num & (1 << k) != 0 (
+all other bits from num we make it 0 by only setting kth bit to 1 (1<<k). If kth bit is set then 'bitwise &' with 1 at that position won't give 0
+
+2. Set kth bit: num |= (1 << k)
+all other bits from num we make it 0 by only setting kth bit to 1 (1<<k). kth bit  'bitwise 1' with 1 at that position will set it
+
+3. Turn off kth bit: num &= ~(1 << k)
+all other bits from num we make it 1 by only setting kth bit to 0 ~(1<<k). kth bit  'bitwise &' with 0 at that position will unset it
+
+4. Toggle the kth bit: num ^= (1 << k)
+- keep all bits zero (xor of a bit with zero keeps the bit as it is. i.e 0^0 =0 , 1^0=1)
+- keep kth bit 1 which needs to be toggled and xor whole original num with above (1<<k) number.
+
+5. To check if a number is a power of 2: num & num - 1 == 0.
+- 
 
   
 
