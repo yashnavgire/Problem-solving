@@ -1,6 +1,6 @@
 ***Index***
-- [Greedy](#item--one)
-  
+- [Greedy](#item-one)
+
 --------------
 
 <a id="item-one"></a>
