@@ -83,6 +83,11 @@ int main() {
 	// create a data type where you store 
 	{string, int, double, char} 
 
+	String I/O : 
+	string str;
+	cin>> str; //break after space 
+	getline(cin, str) //break after line
+
 
     // wrong way of defining 
 	node raj; 
