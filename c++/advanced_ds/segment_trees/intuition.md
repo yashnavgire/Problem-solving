@@ -1,14 +1,14 @@
 Board link : https://excalidraw.com/#json=CPttFPlnWauL0iX5rNs3L,7kzM_vgVsjrBWAvD75g3yg
 
-Segment tree stores the range information in segments, starting from full array length then equally dividing each segment recursively forming a full binary tree.
+<H4> Segment tree stores the range information in segments, starting from full array length then equally dividing each segment recursively forming a full binary tree. This overlapping segments redundancy helps to perform range queries faster. </H2>
 
 ![alt text](image-1.png)
 
-This overlapping segments redundancy helps to perform range queries faster.
 
 ![alt text](image-2.png)
 
-Imp pts - 
+
+<H4> Imp pts - </H4> 
 
 1. Why the query/update time of segment tree is O(logN), given we traverse both parts of the tree recursively due to partial overlap(shouldn't that be O(N) then)?
 - In segment tree, while traversing for query or update as there are 3 conditions - \
