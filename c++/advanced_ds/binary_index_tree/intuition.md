@@ -24,10 +24,10 @@ Ex: index 6 in BIT array holds sum of (5 to 6 index in original array)
         idx -= idx & (-idx) ... subtract left most significant bit(LMSB), easy way to find LMSB is considering bitwise and of number with its 2's complement.
     ```
 
-4. Now to update index at idx, we need to ensure that in all grps of sum in BIT, the index we are updating..all those grps(BIT index) should be updated:
+4. Now to update index at idx by adding the value val, we need to ensure that in all grps of sum in BIT, the index we are updating..all those grps(BIT index) should be updated:
     ```
     loop until idx<= array.length:
-        BIT[idx] = val
+        BIT[idx] += val
         idx += idx & (-idx)
     ```
 
