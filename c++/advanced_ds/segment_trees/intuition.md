@@ -1,4 +1,4 @@
-Board link : 
+Board link : https://excalidraw.com/#json=CPttFPlnWauL0iX5rNs3L,7kzM_vgVsjrBWAvD75g3yg
 
 Segment tree stores the range information in segments, starting from full array length then equally dividing each segment recursively forming a full binary tree.
 
