@@ -7,10 +7,19 @@ Board link : https://excalidraw.com/#json=CPttFPlnWauL0iX5rNs3L,7kzM_vgVsjrBWAvD
 
 ![alt text](image-2.png)
 
+----
 
 <H4> Imp pts - </H4> 
 
-1. Why the query/update time of segment tree is O(logN), given we traverse both parts of the tree recursively due to partial overlap(shouldn't that be O(N) then)?
+
+1. It can be used efficiently only on static length of array. If we add / remove elements we need to rebuild the tree.
+
+2. Segment tree can be used for mutable range queries on any operator(min/max/sum/gcd etc). Unlike in BIT we do not need to perform prefix calculation to query a range, as each level in Segment tree covers full array and therefore it is not limited to inverse functions.
+
+3. Segment tree is always a full binary tree / represented as full binary tree in array format. This is because we divide left and right subtree in equal half to keep the tree balanced and hence the size of tree as logN.
+
+
+4. Why the query/update time of segment tree is O(logN), given we traverse both parts of the tree recursively due to partial overlap(shouldn't that be O(N) then)?
 - In segment tree, while traversing for query or update as there are 3 conditions - \
     i.  given query range fully overlaps current node range. \
     ii. given query range does not overlaps with current node range. \
@@ -20,8 +29,5 @@ Board link : https://excalidraw.com/#json=CPttFPlnWauL0iX5rNs3L,7kzM_vgVsjrBWAvD
 - Therefore, at max the tree traversal from root to leaf will be in 2 paths in worst case, which will cause the time-complexity as 2*O(logN) ~ O(logN)
 ![alt text](image.png)
 
-2. It can be used efficiently only on static length of array. If we add / remove elements we need to rebuild the tree.
 
-3. Segment tree is always a full binary tree / represented as full binary tree in array format. This is because we divide left and right subtree in equal half to keep the tree balanced and hence the size of tree as logN.
-
-4. Always push the lazy updates to child nodes (to explicitly identify a particular change when multiple updates performed to same range consecutively and all updates to leaf node not propagated)
+5. Always push the lazy updates to child nodes (to explicitly identify a particular change when multiple updates performed to same range consecutively and all updates to leaf node not propagated)
