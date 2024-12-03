@@ -2,6 +2,7 @@ Brute-force => idea
 Backtracking => implementation (brute force using recursion strategy)
 
 ------------
+
 strategy for solving using brute force by creating possibilities and considering valid ones:
 
 all possibilities in certain cases are created recursively and some cases iteratively
@@ -37,6 +38,7 @@ Check()
 Move()
 - make a recursive call, if the check for the current choice is valid  
 
+----------------
 
 ###Quesions solved
 
