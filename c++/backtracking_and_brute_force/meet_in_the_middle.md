@@ -1,6 +1,6 @@
 ### optimise the time complexity where all permutations are required.
 
-#### it optimises time complexity from O(2^n) -> O(2^n/2)
+#### it optimises time complexity from O(2^n) -> O(2^n/2) or O(X^n) -> O(x^n/2)
 
 1. applicable in problems where N~(40-60) and all permuatations are required
 2. since 40! will exceed time limit, we try to divide the original set in 2 halfs (20, 20) and create permuatations independently for smaller lengths.
@@ -14,7 +14,13 @@
     - A matching or pairing criterion from 2 sets is available
 
 
-Example problem: 
+### Note 
+- generally meet in the middle or what needs to be divided and solved independently depends on the recursion level in brute force algo.
+- the constraints for divided sets are defined by dividing levels
+- on the divided constraints we create result sets independently and instead of doing cross product b/w 2 result sets which will be basically brute force result set we try to optimise search in other result set by fixing one result set element at a time
+
+
+Example problems: 
 
 2nd dec' 24
 
@@ -43,7 +49,49 @@ Example problem:
     for other variants 3 & 4
     3. in map we keep the pair c,d
     4. in map we keep the count of a particular sum in map rather just if that sum exists or not
+
+    As per our note, here in brute force soln the level in recursion is constraint on the problem. i.e
+    number of elements equals target = 4.
+    Therefore level is number of element remaining to choose from current index. following is recursive function definition
+    rec(index, level=4/3/2/1): possible ways to choose level number of elements from (index ... n)
     
+3. Square partition
+    1. level in brute force here is array index
+    rec(level, a,b,c,d): => given index level and 4 side length a,b,c,d, check whether with (level+1...n) can form a square
+        //base
+        if a==b==c==d:
+            return true
+        
+        //choices -> in which side current index to be considered 
+        rec(level+1, a+arr[level], b, c, d)
+        rec(level+1, a, b+arr[level], c, d)
+        rec(level+1, a, b, c+arr[level], d)
+        rec(level+1, a, b, c, d+arr[level])
 
+        return false
+        
 
+4. String reversals
+    1. given string s, find if it can be converted to string T by reversing any of its substring by 4 times
+    
+    - here the brute force recursive approach is:
+
+    The constraint is string can be reversed by 4 times.
+    
+    rec(s, number_of_reversals_remaining): given string s generate all possible strings by reversing each substring number_of_reversals_remaining times
+
+        // base case
+        if (number_of_reversals_remaining == 0)
+            add in gen
+
+        for each substring in s:
+            rec(revers(substring, number_of_reversals_remaining-1))
+
+    - so to decide on what to choose to divide on to solve independetly for possible meet_in_middle algo here based on level in brute force which is number_of_reversals_remaining can be considered
+
+    - instead of creating all possiblities for 4 reversals on a string, we can create all possibilities on 2 reversals on S(initial string) and all possibilities on 2 reversals on T(target string)
+
+    - from the above result sets if there one matching pair then we can say its possible to convert S->T by reversing 4 times
+
+    Observation above is: if a string is reversed even number of times it results in same string
 
