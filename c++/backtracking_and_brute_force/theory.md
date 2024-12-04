@@ -38,6 +38,17 @@ Check()
 Move()
 - make a recursive call, if the check for the current choice is valid  
 
+
+Time Complexity of Brute force and LCCM code - 
+
+Level -> X levels are there
+Choice -> Y choices for each level
+Check -> A steps to verify one choice
+Move -> B steps to move
+
+TC: Y^X.(A+B)
+
+
 ----------------
 
 ###Quesions solved
