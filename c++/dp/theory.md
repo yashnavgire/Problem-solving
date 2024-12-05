@@ -29,7 +29,7 @@ DP Framework:
 
 
 Form1: knapsack variation
-1. overlapping sub-problem from all possible subset from (i,j) [any combination from (i,j), i.e non-contigous and elements can be skipped  + order of elements wrt original array not mandatory]  
+1. overlapping sub-problem from all possible subsequence from (i,j) [any combination from (i,j), i.e non-contigous and elements can be skipped  + order of elements wrt original array not mandatory]  
 
 2. states: are class/object in problem + constraints
 dp(index/level, constraint_variable) - best ans from (index .... n) given constraint
@@ -46,7 +46,8 @@ b. climb stair
 
 
 Form2: ending/starting at i  
-1. overlapping sub-problem from all possible subsequence from (i,j) [any combination from (i,j) with order maintained, i.e non-contigous and elements can be skipped + order of elements wrt original array mandatory]
+1. overlapping sub-problem from all possible subsequence from (i,j) which includes j in all combination 
+[i.e any combination from (i,j) including j, i.e non-contigous and elements can be skipped + order of elements wrt original array mandatory/not-mandatory]
 
 2. states:
 dp(index, constraint_optional) - best ans with combinations starting/ending at index(inclusion of index is mandatory in all combinations out of which best is selected to form this dp state)
