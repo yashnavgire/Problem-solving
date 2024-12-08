@@ -31,3 +31,34 @@ In this case for implementation we can maintain edge in original graph with weig
 Given an array having n elements, the cost to move from ith element to its adjacent element (if exist) at i+1 and i−1 is b and the cost to move to other same valued index is a. Find min cost to reach every index from a given source index of the array.
 
 here to make all edges from one same value node to another same value node with weight `a` will lead to n^2 (nC2) edges in worst case and since the shortest path algorithm depends on edges it will impact TC. Therefore to reduce the number of edges in such scenario `where we want to connect all pairs of same value nodes` we can use `junction node concept`, where we will create one dummy node junction to which all same value nodes will connect with `0` weight and there will be edge from junction node to all same nodes with weight `a`. Now we can reach from one same value node to other same value node through this junction node with same weight(0+a) and also there number of edges will be `2*n` (reduced from n^2)
+
+
+#### Leetcode problems and patterns/tricks
+
+1. leetcode 2045: new idea to pick -> how to find top k min distance from source to destination in djikstra/BFS, allow visited to that node multiple times and relax its neighbours with the curr distance to that node (if top k min distance to that node is obtained then don't allow to visit that node again) 
+
+2. leetcode 2203: 
+    1. new idea to pick ->  in a directed graph if we want to find the shortest distance from all nodes to some node(say target node) then we can reverse the graph and run djikstra/bfs by considering the source as target node. since distance[a->b] = distance[b->a]
+    2. In the given problem there are multiple cases for path b/w src1->target  & src2->target and we want to minise the sum of 2 paths we choose. optimal cases could
+        1. both optimal paths are independent i.e common node in 2 paths is target
+        2. both optimal paths is from some common node and from common node to target it will be common path. i.e common node here some node != src1, src2, target
+        3. both optimal path is from either src1 or src2. i.e common node = src1/src2
+        4. Therefore, generically we want to consider all nodes as common node and find sum of paths = distance_src1[common_node] + distance_src2[common_node] + distance_common_node[target], for all common_node: 1->n
+    3. Therefore in above equation to identify -
+        1. distance_src1[common_node] - run djikstra from src1 to get shortest path to all nodes
+        2. distance_src2[common_node] - run djikstra from src2 to get shortest path to all nodes
+        3. distance_common_node[target] is also equal to distance of target to common node. therefore instead of running djisktra from all possible common node to get shortest path from common node to target, we can use the new idea mentioned in pt1, by reversing the graph and running djisktra on target node as source, so in one run we get shortest path to all possible common nodes from target.
+        4. once we have 3.1, 3.2, 3.3 we can find 2.4 equation and take min value
+
+
+#### other techniques
+1. GIven a graph, find number of shortest paths from source to destination -
+    1. maintain a state for number of shortest path at each node, going from node1 -> node2 
+        1. if distance[node1->node2] < dist[node2] => number_sp[node2] = number_sp[node1]
+        2. if distance[node1->node2] == dist[node2] => number_sp[node2] += number_sp[node1]
+
+2. Pseudo junction node trick/concept
+    1. when number of edges in given problem seems to go quite huge then try to add these junction node for connecting similar property nodes through this junction (node->junction with weight 0 and junction->node with weight), node all similar nodes (n) are connected with only 2*n edges and not nC2 or n^2 edges.
+
+3. Modelling bit string based nodes to number nodes with bitwise manipulation (storing string in each state of node in grp would memory exceed / time limit on string operations), therefore try to see if nodes & states can be modelled in numbers for string problems to where graph is to be used
+
