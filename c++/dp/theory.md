@@ -1,4 +1,13 @@
 /*
+
+DP -> Can be applied on `DAG` where `DAG` is created as - nodes are states and edges represent the dependency b/w the states. (Which we also call as `recursion tree`)
+- If the 2 or more state depends on same state (and this condition is true for multiple states) then we can reuse the computed value for that state by caching it
+- It needs be DAG since we want to know which state depends(source) on other states(destination) and no cyclic dependency - as cycles will lead to deadlock and infinite recursion
+
+`Top-Down(reverse topological order):` start from reverse topological order where we are not sure if its dependencies are evaluated, so first we resolve all the current state dependencies using recursion and then solve the current one (storing dp value at end of recursion is nothing but topo sort)
+
+`Bottom-up(topological order):` start evaluation from base case where we know the ans at it do not depend on any other state (topological order). We then move to evaluate state which are dependent on this base case and evaluate them. All the evaluated onces are stored and we compute the other states in topological order since that order guarantees all its dependent states are evaluated  
+
 notes:
 
 - constraints in the problem makes a backtracking/recursive problem to be optimised as dp

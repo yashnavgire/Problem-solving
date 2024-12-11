@@ -1,6 +1,10 @@
 ### AZ DSU module
 
-#### Edge removal
+### question patterns
+
+#### 1. Normal DSU
+
+#### 2. Edge removal
 
 Given a graph with n nodes and m edges, there are Q queries with following 2 operations - 
 1. remove an edge x
@@ -19,7 +23,7 @@ Therefore here to use DSU, somehow we need to think if merging the edges can lea
 3. Now we will merge(rank compression) each edge in reverse order of that obtained from Queries and update base number of connected components obtained in step2 (reduce if parent are different / keep same of parent are same) 
 
 
-### Find number of paths passing through an edge by considering size of component associated with the edge nodes.
+#### 3. Find number of paths passing through an edge by considering size of component associated with the edge nodes.
 
 problem: given a weighted tree with n nodes and m edges, find the smallest weight edge for each path between all nodes 
 
@@ -29,3 +33,8 @@ problem: given a weighted tree with n nodes and m edges, find the smallest weigh
 Here as the edges are processed in descending order, we are sure that all current edge length would be minimum for all paths from all components from one edge node to all components of other edge node
 
 3. Merge nodes(with its component size) of that edge   
+
+#### 4. Rollback on DSU (two kingdom - AZ)
+
+#### 5. Weighted DSU (equation problem - AZ) [not asked in coding interview but on CF/CC it is]
+
